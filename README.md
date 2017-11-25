@@ -1,4 +1,4 @@
-# sequelize-typescript-start
+# sequelize-typescript-starter
 
 ## Installation
 ```
