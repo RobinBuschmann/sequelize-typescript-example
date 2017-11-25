@@ -4,41 +4,49 @@ import {MovieActor} from '../models/MovieActor';
 
 export const actors = Router();
 
-actors.post('/', (req, res, next) => {
-  Actor
-    .create(req.body)
-    .then(() => res.sendStatus(201))
-    .catch(next);
+actors.post('/', async (req, res, next) => {
+  try {
+    const actor = await Actor.create(req.body);
+    res.status(201).json(actor);
+  } catch (e) {
+    next(e);
+  }
 });
 
-actors.post('/:id/movies/:movieId', (req, res, next) => {
-  MovieActor
-    .create({
+actors.post('/:id/movies/:movieId', async (req, res, next) => {
+  try {
+    await MovieActor.create({
       actorId: req.params['id'], movieId: req.params['movieId']
-    })
-    .then(() => res.sendStatus(200))
-    .catch(next);
+    });
+    res.sendStatus(200);
+  } catch (e) {
+    next(e);
+  }
 });
 
-actors.get('', (req, res, next) => {
-  Actor
-    .scope(req.query['scope'])
-    .findAll()
-    .then(_actors => res.json(_actors))
-    .catch(next);
+actors.get('', async (req, res, next) => {
+  try {
+    const actors = await Actor.scope(req.query['scope']).findAll();
+    res.json(actors);
+  } catch (e) {
+    next(e);
+  }
 });
 
-actors.get('/:id', (req, res, next) => {
-  Actor
-    .scope(req.query['scope'])
-    .findById(req.params['id'])
-    .then(actor => res.json(actor))
-    .catch(next);
+actors.get('/:id', async (req, res, next) => {
+  try {
+    const actor = await Actor.scope(req.query['scope']).findById(req.params['id']);
+    res.json(actor);
+  } catch (e) {
+    next(e);
+  }
 });
 
-actors.put('/:id', (req, res, next) => {
-  Actor
-    .update(req.body, {where: {id: req.params['id']}})
-    .then(() => res.sendStatus(200))
-    .catch(next);
+actors.put('/:id', async (req, res, next) => {
+  try {
+    await Actor.update(req.body, {where: {id: req.params['id']}});
+    res.sendStatus(200);
+  } catch (e) {
+    next(e);
+  }
 });

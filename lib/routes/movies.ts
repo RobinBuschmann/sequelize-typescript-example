@@ -3,32 +3,38 @@ import {Movie} from '../models/Movie';
 
 export const movies = Router();
 
-movies.post('/', (req, res, next) => {
-  Movie
-    .create(req.body)
-    .then(() => res.sendStatus(201))
-    .catch(next);
+movies.post('/', async (req, res, next) => {
+  try {
+    const movie = await Movie.create(req.body);
+    res.status(201).json(movie);
+  } catch(e) {
+    next(e);
+  }
 });
 
-movies.get('', (req, res, next) => {
-  Movie
-    .scope(req.query['scope'])
-    .findAll()
-    .then(_movies => res.json(_movies))
-    .catch(next);
+movies.get('', async (req, res, next) => {
+  try {
+    const movies = await Movie.scope(req.query['scope']).findAll();
+    res.json(movies);
+  } catch(e) {
+    next(e);
+  }
 });
 
-movies.get('/:id', (req, res, next) => {
-  Movie
-    .scope(req.query['scope'])
-    .findById(req.params['id'])
-    .then(movie => res.json(movie))
-    .catch(next);
+movies.get('/:id', async (req, res, next) => {
+  try {
+    const movie = await Movie.scope(req.query['scope']).findById(req.params['id']);
+    res.json(movie);
+  } catch(e) {
+    next(e);
+  }
 });
 
-movies.put('/:id', (req, res, next) => {
-  Movie
-    .update<Movie>(req.body, {where: {id: req.params['id']}})
-    .then(() => res.sendStatus(200))
-    .catch(next);
+movies.put('/:id', async (req, res, next) => {
+  try {
+    await Movie.update<Movie>(req.body, {where: {id: req.params['id']}});
+    res.sendStatus(200);
+  } catch(e) {
+    next(e);
+  }
 });
