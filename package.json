@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --require ts-node/register index.js"
+    "start": "node --require ts-node/register index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +13,7 @@
     "mysql2": "^1.5.1",
     "reflect-metadata": "^0.1.10",
     "sequelize": "^4.23.0",
-    "sequelize-typescript": "^0.6.0-beta.5",
+    "sequelize-typescript": "^0.6.3",
     "strong-error-handler": "^2.3.0"
   },
   "devDependencies": {

@@ -7,16 +7,15 @@ movies.post('/', async (req, res, next) => {
   try {
     const movie = await Movie.create(req.body);
     res.status(201).json(movie);
-  } catch(e) {
+  } catch (e) {
     next(e);
   }
 });
 
 movies.get('', async (req, res, next) => {
   try {
-    const movies = await Movie.scope(req.query['scope']).findAll();
-    res.json(movies);
-  } catch(e) {
+    res.json(await Movie.scope(req.query['scope']).findAll());
+  } catch (e) {
     next(e);
   }
 });
@@ -25,7 +24,7 @@ movies.get('/:id', async (req, res, next) => {
   try {
     const movie = await Movie.scope(req.query['scope']).findById(req.params['id']);
     res.json(movie);
-  } catch(e) {
+  } catch (e) {
     next(e);
   }
 });
@@ -34,7 +33,7 @@ movies.put('/:id', async (req, res, next) => {
   try {
     await Movie.update<Movie>(req.body, {where: {id: req.params['id']}});
     res.sendStatus(200);
-  } catch(e) {
+  } catch (e) {
     next(e);
   }
 });
