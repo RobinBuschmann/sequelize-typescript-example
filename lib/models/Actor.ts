@@ -35,7 +35,8 @@ export class Actor extends Model<Actor> {
   @Column
   updatedAt: Date;
 
-  static scope(name: string = 'defaultScope'): typeof Actor {
-    return super.scope.call(this, name);
+  static scope(...args: any[]): typeof Actor {
+    args[0] = args[0] || 'defaultScope';
+    return super.scope.call(this, ...args);
   }
 }

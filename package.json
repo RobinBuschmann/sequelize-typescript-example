@@ -9,11 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mysql2": "^1.5.1",
     "reflect-metadata": "^0.1.10",
     "sequelize": "^4.23.0",
-    "sequelize-typescript": "^0.6.3",
+    "sequelize-typescript": "^1.0.0-alpha.1",
     "strong-error-handler": "^2.3.0"
   },
   "devDependencies": {
@@ -21,6 +23,6 @@
     "@types/node": "^8.0.53",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.7.0-dev.20171125"
+    "typescript": "^2.8.1"
   }
 }

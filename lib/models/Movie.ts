@@ -1,8 +1,7 @@
-import {Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt} from "sequelize-typescript";
+import {BelongsToMany, Column, CreatedAt, ICreateOptions, Model, Scopes, Table, UpdatedAt} from "sequelize-typescript";
 import * as Promise from "bluebird";
 import {MovieActor} from "./MovieActor";
 import {Actor} from "./Actor";
-import {ICreateOptions} from "sequelize-typescript/lib/interfaces/ICreateOptions";
 import {Genre} from "./Genre";
 import {MovieGenre} from "./MovieGenre";
 
@@ -52,19 +51,19 @@ export class Movie extends Model<Movie> {
   @Column
   updatedAt: Date;
 
-  static create(values?: any, options?: ICreateOptions): Promise<Movie> {
+  static create(values?: any, options: ICreateOptions = {}): Promise<Movie> {
     const include: any = [];
     if (values) {
       if (values.cast) include.push(Actor);
       if (values.genres) include.push(Genre);
     }
-    if (!options) options = {};
     options.include = options.include ? options.include.concat(include) : include;
 
     return super.create.call(this, values, options);
   }
 
-  static scope(name: string = 'defaultScope'): typeof Movie {
-    return super.scope.call(this, name);
+  static scope(...args: any[]): typeof Movie {
+    args[0] = args[0] || 'defaultScope';
+    return super.scope.call(this, ...args);
   }
 }
