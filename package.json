@@ -14,7 +14,7 @@
     "express": "^4.16.2",
     "mysql2": "^1.5.1",
     "reflect-metadata": "^0.1.10",
-    "sequelize": "^4.23.0",
+    "sequelize": "^4.37.5",
     "sequelize-typescript": "^1.0.0-alpha.1",
     "strong-error-handler": "^2.3.0"
   },
