@@ -1,4 +1,14 @@
-import {BelongsToMany, Column, CreatedAt, ICreateOptions, Model, Scopes, Table, UpdatedAt} from "sequelize-typescript";
+import {
+  BelongsToMany,
+  Column,
+  CreatedAt,
+  ICreateOptions,
+  Model,
+  Scopes,
+  Table,
+  UpdatedAt,
+  FilteredModelAttributes
+} from "sequelize-typescript";
 import * as Promise from "bluebird";
 import {MovieActor} from "./MovieActor";
 import {Actor} from "./Actor";
@@ -51,7 +61,7 @@ export class Movie extends Model<Movie> {
   @Column
   updatedAt: Date;
 
-  static create(values?: any, options: ICreateOptions = {}): Promise<Movie> {
+  static create<T extends Model<T>>(this: (new () => T), values?: FilteredModelAttributes<T>, options: ICreateOptions = {}): Promise<T> {
     const include: any = [];
     if (values) {
       if (values.cast) include.push(Actor);

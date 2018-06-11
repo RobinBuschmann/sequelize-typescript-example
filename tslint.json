@@ -6,6 +6,7 @@
     "no-empty": false,
     "unified-signatures": false,
     "no-trailing-whitespace": false,
+    "no-submodule-imports": false,
     "object-literal-sort-keys": false,
     "interface-name": false,
     "no-consecutive-blank-lines": false,
