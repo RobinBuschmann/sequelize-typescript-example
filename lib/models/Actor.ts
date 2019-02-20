@@ -16,27 +16,23 @@ import {MovieActor} from "./MovieActor";
 export class Actor extends Model<Actor> {
 
   @Column
-  firstName: string;
+  firstName!: string;
 
   @Column
-  lastName: string;
+  lastName!: string;
 
   @Column
-  birthday: Date;
+  birthday?: Date;
 
   @BelongsToMany(() => Movie, () => MovieActor)
   movies?: Movie[];
 
   @CreatedAt
   @Column
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdatedAt
   @Column
-  updatedAt: Date;
+  updatedAt!: Date;
 
-  static scope(...args: any[]): typeof Actor {
-    args[0] = args[0] || 'defaultScope';
-    return super.scope.call(this, ...args);
-  }
 }

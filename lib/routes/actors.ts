@@ -34,7 +34,7 @@ actors.get('', async (req, res, next) => {
 
 actors.get('/:id', async (req, res, next) => {
   try {
-    const actor = await Actor.scope(req.query['scope']).findById(req.params['id']);
+    const actor = await Actor.scope(req.query['scope']).findByPk(req.params['id']);
     res.json(actor);
   } catch (e) {
     next(e);

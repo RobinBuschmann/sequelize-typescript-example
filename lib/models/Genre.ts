@@ -17,16 +17,16 @@ export class Genre extends Model<Genre> {
 
   @PrimaryKey
   @Column
-  name: string;
+  name!: string;
 
   @BelongsToMany(() => Movie, () => MovieGenre)
   movies?: Movie[];
 
   @CreatedAt
   @Column
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdatedAt
   @Column
-  updatedAt: Date;
+  updatedAt!: Date;
 }

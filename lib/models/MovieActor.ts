@@ -7,9 +7,9 @@ export class MovieActor extends Model<MovieActor> {
 
   @ForeignKey(() => Movie)
   @Column
-  movieId: number;
+  movieId!: number;
 
   @ForeignKey(() => Actor)
   @Column
-  actorId: number;
+  actorId!: number;
 }

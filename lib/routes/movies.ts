@@ -22,7 +22,7 @@ movies.get('', async (req, res, next) => {
 
 movies.get('/:id', async (req, res, next) => {
   try {
-    const movie = await Movie.scope(req.query['scope']).findById(req.params['id']);
+    const movie = await Movie.scope(req.query['scope']).findByPk(req.params['id']);
     res.json(movie);
   } catch (e) {
     next(e);

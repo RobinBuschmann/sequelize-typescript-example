@@ -1,10 +1,10 @@
 import {Sequelize} from 'sequelize-typescript';
+import {Op} from 'sequelize';
 
 export const sequelize = new Sequelize({
-  dialect: 'mysql',
-  operatorsAliases: Sequelize.Op as any,
+  dialect: 'sqlite',
+  operatorsAliases: Op,
   database: 'movies',
-  username: 'root',
-  password: '',
-  modelPaths: [__dirname + '/models']
+  storage: ':memory:',
+  models: [__dirname + '/models']
 });
