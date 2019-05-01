@@ -14,8 +14,8 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "reflect-metadata": "^0.1.10",
-    "sequelize": "^5.7.1",
-    "sequelize-typescript": "^1.0.0-beta.1",
+    "sequelize": "^5.8.1",
+    "sequelize-typescript": "^1.0.0-beta.2",
     "sqlite3": "^4.0.6",
     "strong-error-handler": "^2.3.0"
   },
