@@ -7,7 +7,12 @@ import {MovieGenre} from "./MovieGenre";
     include: [
       {
         model: Movie,
+<<<<<<< HEAD
         through: {attributes: ['dfssdfs']},
+=======
+        on: {},
+        through: {attributes: ['test1']},
+>>>>>>> t1
       },
     ],
   },
