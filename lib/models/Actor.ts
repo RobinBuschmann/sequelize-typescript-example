@@ -2,16 +2,16 @@ import {Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt} from 
 import {Movie} from "./Movie";
 import {MovieActor} from "./MovieActor";
 
-@Scopes({
+@Scopes(() => ({
   movies: {
     include: [
       {
-        model: () => Movie,
+        model: Movie,
         through: {attributes: []},
       },
     ],
   },
-})
+}))
 @Table
 export class Actor extends Model<Actor> {
 
