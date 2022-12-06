@@ -11,8 +11,8 @@
   "dependencies": {
     "@types/bluebird": "^3.5.26",
     "bluebird": "^3.5.1",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "reflect-metadata": "^0.1.10",
     "sequelize": "^5.12.2",
     "sequelize-typescript": "^1.0.0-beta.3",
